@@ -1,38 +1,207 @@
-.App {
+table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  border-spacing: 0px;
+  overflow-y: auto;
+  border-collapse: separate;
+  font-size: 10px;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  /* background: #eee; */
+}
+
+th {
+  /* background: #333; */
+  /* color: white; */
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th,
+td {
+  border-left: none;
+  border-right: none;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+tbody:before {
+  content: "-";
+  display: block;
+  line-height: 2em;
+  color: transparent;
+}
+input[type="checkbox"]:checked {
+  width: 5px !important;
+  height: 5px !important;
+  margin: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  outline: 2px solid lightblue;
+  box-shadow: none;
+  font-size: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.App {
+  padding-top: 2rem;
+}
+
+.first-cell {
+  border-left: 1px solid #ccc;
+  border-collapse: collapse;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.last-cell {
+  border-right: 1px solid #ccc;
+  border-collapse: collapse;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.row-gap {
+  height: 1rem;
+}
+
+.table-row {
+  padding: 3rem;
+  height: 2rem;
+}
+
+.product-information {
+  max-width: 300px;
+  text-align: left;
+}
+
+.product-id {
+  font-weight: 700;
+  box-sizing: content-box;
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+.product-information__group-data--row
+  > .product-information__group-data--grid
+  > .grid--no-padding-left {
+}
+
+#product-information-flag {
+  padding-right: 0;
+}
+
+#product-information-id {
+  padding-right: 5px;
+}
+
+.clickable-icon {
+  cursor: pointer;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
-  to {
-    transform: rotate(360deg);
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  .table-row {
+    padding: 0;
+    height: inherit;
+  }
+  /*
+	Label the data
+	*/
+  td:nth-of-type(1):before {
+    content: " ";
+  }
+  td:nth-of-type(2):before {
+    content: "Product Information";
+  }
+  td:nth-of-type(3):before {
+    content: "KPI";
+  }
+  td:nth-of-type(4):before {
+    content: "Avg Price";
+  }
+  td:nth-of-type(5):before {
+    content: "Avg Profit";
+  }
+  td:nth-of-type(6):before {
+    content: "Avg Margin";
+  }
+  td:nth-of-type(7):before {
+    content: "Avg Daily Sold Unit";
+  }
+  td:nth-of-type(8):before {
+    content: "Avg Daily Revenue";
+  }
+  td:nth-of-type(9):before {
+    content: "Avg ROI";
+  }
+  td:nth-of-type(10):before {
+    content: "Avg Daily Rank";
+  }
+  td:nth-of-type(11):before {
+    content: "Reviews";
+  }
+  td:nth-of-type(12):before {
+    content: "Rating";
+  }
+  td:nth-of-type(13):before {
+    content: "Dimensions";
+  }
+  td:nth-of-type(14):before {
+    content: "More";
   }
 }
